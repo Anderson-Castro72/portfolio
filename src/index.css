@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+@keyframes marquee-once {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-430%); }
+}
+
+.animate-marquee-once {
+  display: flex;
+  gap: 1.5rem;
+  animation: marquee-once 60s linear infinite;
+  white-space: nowrap;
+}

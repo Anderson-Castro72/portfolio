@@ -1,4 +1,17 @@
+import { useState } from "react";
+import { 
+  FaJava, FaNodeJs, FaReact, FaPhp, FaPython, FaDocker, FaHtml5, FaCss3Alt, FaGitAlt, FaAngular
+} from "react-icons/fa";
+import { 
+  SiPostgresql, SiMongodb, SiMysql, SiKotlin, SiIonic, SiLaravel, 
+  SiExpress, SiNestjs, SiBootstrap, SiKubernetes, SiVite, 
+  SiJira, SiTrello, SiAndroidstudio, SiTypescript, SiNextdotjs, SiTailwindcss, 
+  SiFirebase, SiNginx, SiJest, SiCypress, SiMocha
+} from "react-icons/si";
+
 export default function Portfolio() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   const projects = [
     {
       title: "Bus Tracking App",
@@ -12,12 +25,81 @@ export default function Portfolio() {
       demo: "#",
       repo: "#"
     }
+    
   ];
+
+const techs = [
+  // Languages
+  { icon: <FaPython className="text-yellow-500" />, name: "Python", category: "Languages" },
+  { icon: <FaJava className="text-red-600" />, name: "Java", category: "Languages" },
+  { icon: <FaPhp className="text-indigo-600" />, name: "PHP / Yii2", category: "Languages" },
+  { icon: <FaNodeJs className="text-green-600" />, name: "JavaScript", category: "Languages" },
+
+  // Frontend
+  { icon: <FaHtml5 className="text-orange-600" />, name: "HTML5", category: "Frontend" },
+  { icon: <FaCss3Alt className="text-blue-600" />, name: "CSS3", category: "Frontend" },
+  { icon: <SiTailwindcss className="text-sky-400" />, name: "Tailwind CSS", category: "Frontend" },
+  { icon: <SiNextdotjs className="text-gray-900" />, name: "Next.js", category: "Frontend" },
+  { icon: <img src="/AngularJS.svg" className="w-10 h-10" />, name: "Angular.js", category: "Frontend" },
+  { icon: <SiTypescript className="text-blue-600" />, name: "TypeScript", category: "Frontend" },
+  { icon: <FaReact className="text-blue-500" />, name: "React", category: "Frontend" },
+  { icon: <SiVite className="text-yellow-500" />, name: "Vite", category: "Frontend" },
+  { icon: <SiBootstrap className="text-purple-600" />, name: "Bootstrap", category: "Frontend" },
+
+  // Backend
+  { icon: <SiExpress className="text-gray-700" />, name: "Express.js", category: "Backend" },
+  { icon: <SiNestjs className="text-red-600" />, name: "Nest.js", category: "Backend" },
+  { icon: <SiLaravel className="text-red-500" />, name: "Laravel", category: "Backend" },
+  { icon: <FaDocker className="text-blue-500" />, name: "Docker", category: "Backend" },
+  { icon: <SiKubernetes className="text-blue-600" />, name: "Kubernetes", category: "Backend" },
+
+  // Databases
+  { icon: <SiMysql className="text-orange-600" />, name: "MySQL", category: "Databases" },
+  { icon: <SiPostgresql className="text-sky-700" />, name: "PostgreSQL", category: "Databases" },
+  { icon: <SiMongodb className="text-green-700" />, name: "MongoDB", category: "Databases" },
+
+  // Data Science
+  { icon: <img src="/Pandas.svg" className="w-10 h-10" />, name: "Pandas", category: "Data Science" },
+  { icon: <img src="/NumPy.svg" className="w-10 h-10" />, name: "NumPy", category: "Data Science" },
+
+  // Mobile
+  { icon: <SiKotlin className="text-purple-500" />, name: "Kotlin", category: "Mobile" },
+  { icon: <SiIonic className="text-blue-500" />, name: "Ionic", category: "Mobile" },
+  { icon: <SiAndroidstudio className="text-green-600" />, name: "Android Studio", category: "Mobile" },
+
+  // Infrastructure / Cloud
+  { icon: <SiNginx className="text-green-600" />, name: "NGINX", category: "Infrastructure" },
+  { icon: <SiFirebase className="text-yellow-400" />, name: "Firebase", category: "Infrastructure" },
+  { icon: <img src="/AWS.svg" className="w-10 h-10" />, name: "AWS", category: "Infrastructure" },
+
+  // Testing
+  { icon: <SiJest className="text-red-500" />, name: "Jest", category: "Testing" },
+  { icon: <SiMocha className="text-green-700" />, name: "Mocha", category: "Testing" },
+  { icon: <SiCypress className="text-teal-500" />, name: "Cypress", category: "Testing" },
+
+  // Tools
+  { icon: <FaGitAlt className="text-orange-600" />, name: "Git", category: "Tools" },
+  { icon: <SiJira className="text-blue-400" />, name: "Jira", category: "Tools" },
+  { icon: <SiTrello className="text-sky-400" />, name: "Trello", category: "Tools" },
+  { icon: <img src="/Postman.svg" className="w-10 h-10" />, name: "Postman", category: "Tools" },
+  { icon: <img src="/VisualStudio.svg" className="w-10 h-10" />, name: "Visual Studio", category: "Tools" },
+  { icon: <img src="/code.svg" className="w-10 h-10" />, name: "VS Code", category: "Tools" },
+];
+
+
+    const categories = ["All", ...new Set(techs.map(t => t.category))];
+
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
       {/* Hero */}
       <section className="flex flex-col items-center justify-center py-24 text-center bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-white">
+        <img
+          src="/logo.png"
+          alt="Ander Logo"
+          className="w-40 h-40 mx-auto mb-6 rounded-full shadow-xl"
+        />
+
         <h1 className="font-mono text-5xl font-bold mb-4 drop-shadow-lg">
           Anderson Castro| Full Stack Developer
         </h1>
@@ -42,6 +124,58 @@ export default function Portfolio() {
           React, and database design. I love building solutions that balance performance and usability.
         </p>
       </section>
+
+      {/* Tecnologías */}
+    <section className="max-w-6xl mx-auto py-16 px-4">
+      <h2 className="text-3xl font-semibold text-center mb-10">Tech Skills</h2>
+
+      {/* Botones de categorías */}
+      <div className="flex flex-wrap justify-center mb-8 gap-4">
+        {categories.map(cat => (
+          <button
+            key={cat}
+            className={`px-4 py-2 rounded-xl font-medium transition-colors ${
+              selectedCategory === cat ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800"
+            }`}
+            onClick={() => setSelectedCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Tech Grid */}
+{selectedCategory === "All" ? (
+  <div className="relative overflow-hidden w-full py-4">
+    <div className="animate-marquee-once">
+      {techs.map((t, i) => (
+        <div
+          key={i}
+          className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px]"
+        >
+          <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
+          <p className="text-sm text-gray-700 text-center">{t.name}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+) : (
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+    {techs
+      .filter(t => t.category === selectedCategory)
+      .map((t, i) => (
+        <div
+          key={i}
+          className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl"
+        >
+          <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
+          <p className="text-sm text-gray-700 text-center">{t.name}</p>
+        </div>
+      ))}
+  </div>
+)}
+
+        </section>
 
       {/* Projects */}
       <section className="max-w-6xl mx-auto py-20 px-4">
