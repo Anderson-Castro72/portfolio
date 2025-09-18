@@ -105,7 +105,7 @@ export default function Portfolio() {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/50377343434?text=Hola%20Ander%2C%20vi%20tu%20portafolio"
+            href="https://wa.me/50377343434?text=Hola%20Ander%2C%20vi%20tu%20portafolio%20y%20me%20parecen%20interesantes%20tus%20proyectos.%20Soy..."
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-xl shadow-lg hover:bg-green-400 transition-all duration-300"
