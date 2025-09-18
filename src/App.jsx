@@ -88,7 +88,7 @@ export default function Portfolio() {
         <div className="flex flex-wrap justify-center gap-6">
           {/* Email */}
           <a
-            href="mailto:tuemail@example.com"
+            href="mailto:andersteven.castro@gmail.com"
             className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-500 transition-all duration-300"
           >
             <svg
