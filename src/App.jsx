@@ -105,7 +105,7 @@ export default function Portfolio() {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/1234567890?text=Hola%20Ander%2C%20vi%20tu%20portafolio"
+            href="https://wa.me/50377343434?text=Hola%20Ander%2C%20vi%20tu%20portafolio"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-xl shadow-lg hover:bg-green-400 transition-all duration-300"
@@ -123,7 +123,7 @@ export default function Portfolio() {
 
           {/* LinkedIn */}
           <a
-            href="https://www.linkedin.com/in/tuusuario/"
+            href="www.linkedin.com/in/anderson-castro72/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-500 transition-all duration-300"
@@ -141,7 +141,7 @@ export default function Portfolio() {
 
           {/* Telegram */}
           <a
-            href="https://t.me/tuusuario"
+            href="https://t.me/Ander_Castro72"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white rounded-xl shadow-lg hover:bg-cyan-400 transition-all duration-300"
