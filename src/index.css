@@ -25,3 +25,16 @@
   animation: marquee-once 60s linear infinite;
   white-space: nowrap;
 }
+
+
+@media (max-width: 768px) {
+  .animate-marquee-once {
+    animation-duration: 120s;
+  }
+}
+
+@media (max-width: 480px) {
+  .animate-marquee-once {
+    animation-duration: 10s; 
+  }
+}

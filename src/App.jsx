@@ -145,35 +145,35 @@ const techs = [
       </div>
 
       {/* Tech Grid */}
-{selectedCategory === "All" ? (
-  <div className="relative overflow-hidden w-full py-4">
-    <div className="animate-marquee-once">
-      {techs.map((t, i) => (
-        <div
-          key={i}
-          className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px]"
-        >
-          <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
-          <p className="text-sm text-gray-700 text-center">{t.name}</p>
+      {selectedCategory === "All" ? (
+        <div className="relative overflow-hidden w-full py-4">
+          <div className="animate-marquee-once">
+            {techs.map((t, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px]"
+              >
+                <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
+                <p className="text-sm text-gray-700 text-center">{t.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-) : (
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-    {techs
-      .filter(t => t.category === selectedCategory)
-      .map((t, i) => (
-        <div
-          key={i}
-          className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl"
-        >
-          <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
-          <p className="text-sm text-gray-700 text-center">{t.name}</p>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          {techs
+            .filter(t => t.category === selectedCategory)
+            .map((t, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl"
+              >
+                <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
+                <p className="text-sm text-gray-700 text-center">{t.name}</p>
+              </div>
+            ))}
         </div>
-      ))}
-  </div>
-)}
+      )}
 
         </section>
 
