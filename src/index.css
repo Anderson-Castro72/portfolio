@@ -16,7 +16,7 @@
 
 @keyframes marquee-once {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-430%); }
+  100% { transform: translateX(-550%); }
 }
 
 .animate-marquee-once {
