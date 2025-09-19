@@ -12,27 +12,11 @@ import {
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const projects = [
-    {
-      title: "Bus Tracking App",
-      description: "Real-time public transport tracking system.",
-      demo: "#",
-      repo: "#"
-    },
-    {
-      title: "E-commerce Backend",
-      description: "Scalable backend for online store with payment integration.",
-      demo: "#",
-      repo: "#"
-    }
-    
-  ];
-
 const techs = [
   // Languages
   { icon: <FaPython className="text-yellow-500" />, name: "Python", category: "Languages" },
   { icon: <FaJava className="text-red-600" />, name: "Java", category: "Languages" },
-  { icon: <FaPhp className="text-indigo-600" />, name: "PHP / Yii2", category: "Languages" },
+  { icon: <FaPhp className="text-indigo-600" />, name: "PHP", category: "Languages" },
   { icon: <FaNodeJs className="text-green-600" />, name: "JavaScript", category: "Languages" },
 
   // Frontend
@@ -50,6 +34,8 @@ const techs = [
   { icon: <SiExpress className="text-gray-700" />, name: "Express.js", category: "Backend" },
   { icon: <SiNestjs className="text-red-600" />, name: "Nest.js", category: "Backend" },
   { icon: <SiLaravel className="text-red-500" />, name: "Laravel", category: "Backend" },
+  { icon: <img src="/Yii.svg" className="w-10 h-10" />, name: "Yii2", category: "Backend" },
+  { icon: <img src="/Symfony.svg" className="w-10 h-10" />, name: "Symfony", category: "Backend" },
   { icon: <FaDocker className="text-blue-500" />, name: "Docker", category: "Backend" },
   { icon: <SiKubernetes className="text-blue-600" />, name: "Kubernetes", category: "Backend" },
 
@@ -78,12 +64,78 @@ const techs = [
   { icon: <SiCypress className="text-teal-500" />, name: "Cypress", category: "Testing" },
 
   // Tools
-  { icon: <FaGitAlt className="text-orange-600" />, name: "Git", category: "Tools" },
+  { icon: <img src="/GitHub.svg" className="w-10 h-10" />, name: "Github", category: "Tools" },
   { icon: <SiJira className="text-blue-400" />, name: "Jira", category: "Tools" },
   { icon: <SiTrello className="text-sky-400" />, name: "Trello", category: "Tools" },
   { icon: <img src="/Postman.svg" className="w-10 h-10" />, name: "Postman", category: "Tools" },
   { icon: <img src="/VisualStudio.svg" className="w-10 h-10" />, name: "Visual Studio", category: "Tools" },
   { icon: <img src="/code.svg" className="w-10 h-10" />, name: "VS Code", category: "Tools" },
+];
+
+
+const projects = [
+  {
+    name: "Reverse Auction Platform",
+    period: "Feb – Aug 2025",
+    description:
+      "Platform connecting companies with developers through reverse auctions. Features rating system and transparent, immutable bids.",
+    role: [
+      "Testing lead: manual cases & Postman for REST API",
+      "Backend support: PostgreSQL design + Node.js (Sequelize)",
+      "Integration & deployment on AWS (EC2, S3, Route 53)",
+      "Agile teamwork using Trello (Kanban)",
+    ],
+    technologies: [
+      "Node.js", "Express.js", "Sequelize", "PostgreSQL",
+      "Angular", "Ionic", "AWS", "Git", "API REST",
+    ],
+    impact:
+      "Delivered a secure and scalable auction mechanism with bid transparency and AWS-based deployment.",
+    link: "https://github.com/AnderSegovia/reverse-auction", // cambia si tienes repo privado
+    image: "/projects/reverse-auction.png",
+  },
+  {
+    name: "University Social Service System",
+    period: "Apr – Jul 2024",
+    description:
+      "Integral platform to manage students, projects and institutions for social service, automating manual processes.",
+    role: [
+      "Full Stack development (analysis to deployment)",
+      "Database design & management with MySQL",
+      "Backend with PHP (Yii2) + REST API",
+      "Responsive frontend with Bootstrap",
+      "PDF & Excel reporting integrations",
+    ],
+    technologies: [
+      "PHP", "Yii2", "Bootstrap", "JavaScript",
+      "MySQL", "Git", "API REST", "PDF/Excel Libraries",
+    ],
+    impact:
+      "Launched July 2024, managing 1,000+ students & 500+ projects annually, optimizing administration.",
+    link: "https://github.com/AnderSegovia/social-service",
+    image: "/projects/social-service.png",
+  },
+  {
+    name: "Motorcycle Workshop Management",
+    period: "Oct 2024 – Jan 2025",
+    description:
+      "Freelance system for client, inventory, sales and purchase management with barcode integration.",
+    role: [
+      "Full Stack freelance (end-to-end development)",
+      "Frontend in React (Vite) + Axios",
+      "Backend Node.js + Express.js",
+      "Database with MongoDB Atlas",
+      "Testing endpoints with Postman",
+    ],
+    technologies: [
+      "React", "Vite", "Node.js", "Express.js",
+      "MongoDB Atlas", "Axios", "Postman",
+    ],
+    impact:
+      "Automated workflows, reduced inventory errors, and improved customer service for the business.",
+    link: "https://visionary-jalebi-4dad95.netlify.app/",
+    image: "/projects/mototaller.png",
+  },
 ];
 
 
@@ -179,31 +231,28 @@ const techs = [
 
       {/* Projects */}
       <section className="max-w-6xl mx-auto py-20 px-4">
-        <h2 className="text-3xl font-mono font-bold mb-12 text-center border-b-2 border-indigo-400 inline-block pb-2">
-          Projects
-        </h2>
-        <div className="grid gap-8 md:grid-cols-2">
-          {projects.map((p, i) => (
-            <div
-              key={i}
-              className="p-6 bg-white rounded-3xl shadow-xl hover:shadow-2xl hover:scale-105 transition-transform duration-300"
-            >
-              <h3 className="text-2xl font-mono font-bold mb-3 text-indigo-600">{p.title}</h3>
-              <p className="text-gray-700 mb-4">{p.description}</p>
-              <div className="flex gap-6">
-                <a
-                  href={p.demo}
-                  className="text-blue-600 font-semibold hover:underline"
-                >
-                  Demo
-                </a>
-                <a
-                  href={p.repo}
-                  className="text-gray-600 font-medium hover:underline"
-                >
-                  Code
-                </a>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, i) => (
+            <div key={i} className="p-6 bg-white rounded-2xl shadow hover:scale-105 transition">
+              <img src={project.image} alt={project.name} className="rounded-lg mb-4" />
+              <h3 className="text-xl font-bold mb-1">{project.name}</h3>
+              <p className="text-sm text-gray-500 mb-2">{project.period}</p>
+              <p className="text-gray-700 mb-4">{project.description}</p>
+
+              <ul className="text-sm text-gray-600 list-disc ml-5 mb-4">
+                {project.role.map((r, j) => <li key={j}>{r}</li>)}
+              </ul>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.technologies.map((tech, j) => {
+                  const techObj = techs.find(t => t.name.includes(tech));
+                  return techObj ? <div key={j} className="text-2xl">{techObj.icon}</div> : null;
+                })}
               </div>
+
+              <a href={project.link} target="_blank" className="text-blue-500">
+                View Project →
+              </a>
             </div>
           ))}
         </div>
