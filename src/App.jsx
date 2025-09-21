@@ -105,7 +105,13 @@
           "Node.js", "Express.js", "Sequelize", "PostgreSQL","DBeaver",
           "Angular", "Ionic", "AWS", "Github", "Swagger","Trello","Postman","VS Code"
         ],
-        images: ["/projects/13.png"],
+        images: [
+          "/projects/13.png",
+          "/projects/14.png",
+          "/projects/15.png",
+          "/projects/16.png",
+          "/projects/17.png",
+        ],
         link: "https://stirring-raindrop-a222c3.netlify.app/"
       },
       {
@@ -195,19 +201,19 @@
             </h2>
 
           {/* Botones de categorías */}
-<div className="flex flex-wrap gap-3 justify-center mb-8">
-  {categories.map(cat => (
-    <button
-      key={cat}
-      className={`px-4 py-2 rounded-xl font-medium transition-colors ${
-        selectedCategory === cat ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800"
-      }`}
-      onClick={() => setSelectedCategory(cat)}
-    >
-      {cat === "All" ? t("techCategories.all") : t(`techCategories.${cat}`)}
-    </button>
-  ))}
-</div>
+          <div className="flex flex-wrap gap-3 justify-center mb-8">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                className={`px-4 py-2 rounded-xl font-medium transition-colors ${
+                  selectedCategory === cat ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800"
+                }`}
+                onClick={() => setSelectedCategory(cat)}
+              >
+                {cat === "All" ? t("techCategories.all") : t(`techCategories.${cat}`)}
+              </button>
+            ))}
+          </div>
 
 
           {/* Tech Grid */}
