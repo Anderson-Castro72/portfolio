@@ -15,6 +15,7 @@
 
   export default function Portfolio() {
     const [selectedCategory, setSelectedCategory] = useState("All");
+    const [darkMode, setDarkMode] = useState(false);
     const [index, setIndex] = useState(-1);
     const [activeProject, setActiveProject] = useState(null);
 
@@ -153,266 +154,292 @@
     const categories = ["All", ...new Set(techs.map(t => t.category))];
     
       return (
-      <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
-        <button
-          onClick={toggleLang}
-          className="fixed top-4 right-4 bg-white px-3 py-1 rounded shadow text-sm"
-        >
-          {i18n.language === "en" ? "EN 🌐" : "ES 🌐"}
-        </button>
+      <div className={darkMode ? "dark" : ""}>
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
-        {/* Hero */}
-        <section className="flex flex-col items-center justify-center py-24 text-center bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-white">
-          <img
-            src="/logo.png"
-            alt="Ander Logo"
-            className="w-40 h-40 mx-auto mb-6 rounded-full shadow-xl"
-          />
+          <div className="fixed top-4 right-4 flex gap-3">
+            {/* Botón idioma */}
+            <button
+              onClick={toggleLang}
+              className="bg-white dark:bg-gray-700 px-3 py-1 rounded shadow text-sm"
+            >
+              {i18n.language === "en" ? "EN 🌐" : "ES 🌐"}
+            </button>
 
-          <h1 className="font-mono text-5xl font-bold mb-4 drop-shadow-lg">
-            Anderson Castro| Full Stack Developer
-          </h1>
-          <p className="text-lg mb-6 drop-shadow-md">
-            {t("hero.subtitle")}
-          </p>
-          <a
-            href="#contact"
-            className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl shadow-lg hover:bg-gray-100 transition-all duration-300"
-          >
-            {t("hero.contact")}
-          </a>
-          
-        </section>
-
-        {/* About */}
-        <section className="max-w-3xl mx-auto py-20 px-4">
-          <h2 className="text-3xl font-mono font-bold mb-6 border-b-2 border-blue-600 inline-block pb-2">
-            {t("about.title")}
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            {t("about.description")}
-          </p>
-        </section>
-
-        {/* Tecnologías */}
-        <section className="max-w-6xl mx-auto py-16 px-4">
-          <h2 className="text-3xl font-semibold text-center mb-10">
-            {t("skills.title")}
-            </h2>
-
-          {/* Botones de categorías */}
-          <div className="flex flex-wrap gap-3 justify-center mb-8">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                className={`px-4 py-2 rounded-xl font-medium transition-colors ${
-                  selectedCategory === cat ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800"
-                }`}
-                onClick={() => setSelectedCategory(cat)}
-              >
-                {cat === "All" ? t("techCategories.all") : t(`techCategories.${cat}`)}
-              </button>
-            ))}
+            {/* Botón modo oscuro */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded shadow text-sm"
+            >
+              {darkMode ? "🌙 Dark" : "☀️ Light"}
+            </button>
           </div>
 
 
-          {/* Tech Grid */}
-          {selectedCategory === "All" ? (
-            <div className="relative overflow-hidden w-full py-4">
-              <div className="animate-marquee-once">
-                {techs.map((t, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px]"
-                  >
-                    <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
-                    <p className="text-sm text-gray-700 text-center">{t.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {techs
-                .filter(t => t.category === selectedCategory)
-                .map((t, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl"
-                  >
-                    <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
-                    <p className="text-sm text-gray-700 text-center">{t.name}</p>
-                  </div>
-                ))}
-            </div>
-          )}
-
-        </section>
-
-        {/* Projects */}
-        <section className="max-w-6xl mx-auto py-20 px-4">
-          <h2 className="text-3xl font-semibold text-left mb-10">
-            {t("project.title")}
-            </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, i) => (
-              <div
-                key={i}
-                className="p-6 bg-white rounded-2xl shadow hover:scale-105 transition transform"
-              >
-                {/* Imagen principal */}
-                <div className="flex flex-col gap-2 mb-4">
-                  <img
-                    src={project.images[0]}
-                    alt={t(`projects.${project.key}.name`)}
-                    className="rounded-lg mb-4 cursor-pointer"
-                    onClick={() => {
-                      setActiveProject(project);
-                      setIndex(0);
-                    }}
-                  />
-                </div>
-
-                {/* Textos traducibles */}
-                <h3 className="text-xl font-bold mb-1">
-                  {t(`projects.${project.key}.name`)}
-                </h3>
-                <p className="text-gray-800 font-medium mb-4">
-                  {t(`projects.${project.key}.period`)}
-                </p>
-                <p className="text-gray-700 mb-2">
-                  {t(`projects.${project.key}.description`)}
-                </p>
-
-                <ul className="text-sm text-gray-600 list-disc ml-5 mb-2">
-                  {t(`projects.${project.key}.role`, { returnObjects: true }).map((r, idx) => (
-                    <li key={idx}>{r}</li>
-                  ))}
-                </ul>
-
-                <p className="text-gray-800 font-medium mb-4">
-                  {t(`projects.${project.key}.impact`)}
-                </p>
-
-                {/* Tecnologías */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, j) => {
-                    const techObj = techs.find(t => t.name.includes(tech));
-                    return techObj ? <div key={j} className="text-2xl">{techObj.icon}</div> : null;
-                  })}
-                </div>
-
-                {/* Link al proyecto */}
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 font-semibold hover:underline"
-                >
-                  {i18n.language === "en" ? "View Project →" : "Ver Proyecto →"}
-                </a>
-              </div>
-            ))}
-          </div>
-
-          {/* Lightbox */}
-          {activeProject && (
-            <Lightbox
-              slides={activeProject.images.map((img) => ({ src: img }))}
-              open={index >= 0}
-              index={index}
-              close={() => {
-                setIndex(-1);
-                setActiveProject(null);
-              }}
+          {/* Hero */}
+          <section className="flex flex-col items-center justify-center py-24 text-center 
+                   bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 
+                   dark:from-gray-800 dark:via-gray-700 dark:to-gray-900 text-white">
+            <img
+              src="/logo.png"
+              alt="Ander Logo"
+              className="w-40 h-40 mx-auto mb-6 rounded-full shadow-xl"
             />
-          )}
-        </section>
 
-        {/* Contact */}
-        <section id="contact" className="max-w-3xl mx-auto py-20 px-4 text-center">
-          <h2 className="text-3xl font-mono font-bold mb-12 border-b-2 border-purple-400 inline-block pb-2">
-            {t("contact.title")}
-          </h2>
-
-          <p className="mb-8 text-gray-700">
-            {t("contact.subtitle")}
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-6">
-            {/* Email */}
+            <h1 className="font-mono text-5xl font-bold mb-4 drop-shadow-lg">
+              Anderson Castro| Full Stack Developer
+            </h1>
+            <p className="text-white-700 dark:text-white-300 leading-relaxed">
+              {t("hero.subtitle")}
+            </p>
+            <br />
             <a
-              href="mailto:andersteven.castro@gmail.com"
-              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-500 transition-all duration-300"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12H8m0 0l4-4m0 0l4 4M12 16V8" />
-              </svg>
-              Email
-            </a>
+              href="#contact"
+              className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl shadow-lg hover:bg-gray-100 transition-all duration-300 bg-blue-600 text-blue dark:bg-blue-500 dark:text-white hover:bg-blue-500 dark:hover:bg-blue-400"
 
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/50377343434?text=Hola%20Ander%2C%20vi%20tu%20portafolio%20y%20me%20parecen%20interesantes%20tus%20proyectos.%20Soy..."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-xl shadow-lg hover:bg-green-400 transition-all duration-300"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M16.7 14.7c-.3-.1-1.8-.9-2-.9s-.3 0-.5.3c-.2.3-.8.9-.9 1.1s-.2.3-.4.1-.7-.9-1-1.1-.5-.2-.7-.1c-.2.1-.4.1-.7.3-.3.2-1 .6-1.1 1-.1.3-.1.5.2.9s1.1 1.7 2.4 2.7c1.3 1 2.1 1.2 2.4 1.2.3 0 .5 0 .8-.1s1-.4 1.1-.8.1-.7.1-.8c0-.1 0-.2-.1-.3-.1-.1-.3-.3-.5-.5z"/>
-              </svg>
-              WhatsApp
+              {t("hero.contact")}
             </a>
+            
+          </section>
 
-            {/* LinkedIn */}
-            <a
-              href="www.linkedin.com/in/anderson-castro72/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-500 transition-all duration-300"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
+          {/* About */}
+          <section className="max-w-3xl mx-auto py-20 px-4">
+            <h2 className="text-3xl font-mono font-bold mb-6 border-b-2 border-blue-600 inline-block pb-2">
+              {t("about.title")}
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              {t("about.description")}
+            </p>
+          </section>
+
+          {/* Tecnologías */}
+          <section className="max-w-6xl mx-auto py-16 px-4">
+            <h2 className="text-3xl font-semibold text-center mb-10">
+              {t("skills.title")}
+              </h2>
+
+            {/* Botones de categorías */}
+            <div className="flex flex-wrap gap-3 justify-center mb-8">
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  className={`px-4 py-2 rounded-xl font-medium transition-colors ${
+                    selectedCategory === cat
+                      ? "bg-blue-600 text-white dark:bg-blue-500 dark:text-white"
+                      : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+
+                  }`}
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  {cat === "All" ? t("techCategories.all") : t(`techCategories.${cat}`)}
+                </button>
+              ))}
+            </div>
+
+
+            {/* Tech Grid */}
+            {selectedCategory === "All" ? (
+              <div className="relative overflow-hidden w-full py-4">
+                <div className="animate-marquee-once">
+                  {techs.map((t, i) => (
+                    <div
+                      key={i}
+                      className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px] dark:bg-gray-800 dark:text-gray-100"
+                    >
+                      <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
+                      <p className="text-sm text-gray-700 dark:text-gray-200 text-center">{t.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                {techs
+                  .filter(t => t.category === selectedCategory)
+                  .map((t, i) => (
+                    <div
+                      key={i}
+                      className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100"
+                    >
+                      <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
+                      <p className="text-sm text-gray-700 dark:text-gray-200 text-center">{t.name}</p>
+                    </div>
+                  ))}
+              </div>
+            )}
+
+
+          </section>
+
+          {/* Projects */}
+          <section className="max-w-6xl mx-auto py-20 px-4">
+            <h2 className="text-3xl font-semibold text-left mb-10 dark:text-gray-100">
+              {t("project.title")}
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects.map((project, i) => (
+                <div
+                  key={i}
+                  className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md dark:shadow-gray-700/50 
+                            hover:scale-105 transition transform"
+                >
+                  {/* Imagen principal */}
+                  <div className="flex flex-col gap-2 mb-4">
+                    <img
+                      src={project.images[0]}
+                      alt={t(`projects.${project.key}.name`)}
+                      className="rounded-lg mb-4 cursor-pointer"
+                      onClick={() => {
+                        setActiveProject(project);
+                        setIndex(0);
+                      }}
+                    />
+                  </div>
+
+                  {/* Textos traducibles */}
+                  <h3 className="text-xl font-bold mb-1 dark:text-gray-100">
+                    {t(`projects.${project.key}.name`)}
+                  </h3>
+                  <p className="text-gray-800 dark:text-gray-200 font-medium mb-4">
+                    {t(`projects.${project.key}.period`)}
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-2">
+                    {t(`projects.${project.key}.description`)}
+                  </p>
+
+                  <ul className="text-sm text-gray-600 dark:text-gray-400 list-disc ml-5 mb-2">
+                    {t(`projects.${project.key}.role`, { returnObjects: true }).map((r, idx) => (
+                      <li key={idx}>{r}</li>
+                    ))}
+                  </ul>
+
+                  <p className="text-gray-800 dark:text-gray-200 font-medium mb-4">
+                    {t(`projects.${project.key}.impact`)}
+                  </p>
+
+                  {/* Tecnologías */}
+                  <div className="flex flex-wrap gap-2 mb-4 text-gray-900 dark:text-gray-100">
+                    {project.technologies.map((tech, j) => {
+                      const techObj = techs.find(t => t.name.includes(tech));
+                      return techObj ? <div key={j} className="text-2xl">{techObj.icon}</div> : null;
+                    })}
+                  </div>
+
+                  {/* Link al proyecto */}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 dark:text-blue-400 font-semibold hover:underline"
+                  >
+                    {i18n.language === "en" ? "View Project →" : "Ver Proyecto →"}
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            {/* Lightbox */}
+            {activeProject && (
+              <Lightbox
+                slides={activeProject.images.map((img) => ({ src: img }))}
+                open={index >= 0}
+                index={index}
+                close={() => {
+                  setIndex(-1);
+                  setActiveProject(null);
+                }}
+              />
+            )}
+          </section>
+
+          {/* Contact */}
+          <section id="contact" className="max-w-3xl mx-auto py-20 px-4 text-center">
+            <h2 className="text-3xl font-mono font-bold mb-12 border-b-2 border-purple-400 inline-block pb-2">
+              {t("contact.title")}
+            </h2>
+
+            <p className="mb-8 text-gray-700 dark:text-gray-300 leading-relaxed">
+
+              {t("contact.subtitle")}
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-6">
+              {/* Email */}
+              <a
+                href="mailto:andersteven.castro@gmail.com"
+                className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-500 transition-all duration-300"
               >
-                <path d="M19 0h-14c-2.7 0-5 2.3-5 5v14c0 2.7 2.3 5 5 5h14c2.7 0 5-2.3 5-5v-14c0-2.7-2.3-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.3c-.9 0-1.5-.7-1.5-1.5 0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5c0 .8-.7 1.5-1.5 1.5zm13.5 10.3h-3v-4.8c0-1.1-.4-1.8-1.4-1.8-.8 0-1.2.5-1.4 1-.1.2-.1.5-.1.8v4.8h-3v-9h3v1.3c.4-.7 1.2-1.8 3-1.8 2.2 0 3.8 1.4 3.8 4.3v5.2z"/>
-              </svg>
-              LinkedIn
-            </a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12H8m0 0l4-4m0 0l4 4M12 16V8" />
+                </svg>
+                Email
+              </a>
 
-            {/* Telegram */}
-            <a
-              href="https://t.me/Ander_Castro72"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white rounded-xl shadow-lg hover:bg-cyan-400 transition-all duration-300"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/50377343434?text=Hola%20Ander%2C%20vi%20tu%20portafolio%20y%20me%20parecen%20interesantes%20tus%20proyectos.%20Soy..."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-xl shadow-lg hover:bg-green-400 transition-all duration-300"
               >
-                <path d="M9.5 16.5l.3 3.7c.4 0 .6-.2.8-.4l2-1.9 4.2 3c.8.4 1.4.2 1.6-.8l3.1-14.4c.3-1-.3-1.5-1-1.3l-17 6.5c-1 .3-.9 1.1-.2 1.4l4.7 1.5 10.9-6.9c.5-.3.9-.1.5.2l-8.5 8z"/>
-              </svg>
-              Telegram
-            </a>
-          </div>
-        </section>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M16.7 14.7c-.3-.1-1.8-.9-2-.9s-.3 0-.5.3c-.2.3-.8.9-.9 1.1s-.2.3-.4.1-.7-.9-1-1.1-.5-.2-.7-.1c-.2.1-.4.1-.7.3-.3.2-1 .6-1.1 1-.1.3-.1.5.2.9s1.1 1.7 2.4 2.7c1.3 1 2.1 1.2 2.4 1.2.3 0 .5 0 .8-.1s1-.4 1.1-.8.1-.7.1-.8c0-.1 0-.2-.1-.3-.1-.1-.3-.3-.5-.5z"/>
+                </svg>
+                WhatsApp
+              </a>
 
+              {/* LinkedIn */}
+              <a
+                href="www.linkedin.com/in/anderson-castro72/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-500 transition-all duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 0h-14c-2.7 0-5 2.3-5 5v14c0 2.7 2.3 5 5 5h14c2.7 0 5-2.3 5-5v-14c0-2.7-2.3-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.3c-.9 0-1.5-.7-1.5-1.5 0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5c0 .8-.7 1.5-1.5 1.5zm13.5 10.3h-3v-4.8c0-1.1-.4-1.8-1.4-1.8-.8 0-1.2.5-1.4 1-.1.2-.1.5-.1.8v4.8h-3v-9h3v1.3c.4-.7 1.2-1.8 3-1.8 2.2 0 3.8 1.4 3.8 4.3v5.2z"/>
+                </svg>
+                LinkedIn
+              </a>
+
+              {/* Telegram */}
+              <a
+                href="https://t.me/Ander_Castro72"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white rounded-xl shadow-lg hover:bg-cyan-400 transition-all duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M9.5 16.5l.3 3.7c.4 0 .6-.2.8-.4l2-1.9 4.2 3c.8.4 1.4.2 1.6-.8l3.1-14.4c.3-1-.3-1.5-1-1.3l-17 6.5c-1 .3-.9 1.1-.2 1.4l4.7 1.5 10.9-6.9c.5-.3.9-.1.5.2l-8.5 8z"/>
+                </svg>
+                Telegram
+              </a>
+            </div>
+          </section>
+
+        </div>
       </div>
     );
   }
