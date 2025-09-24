@@ -51,6 +51,7 @@
       { icon: <SiLaravel className="w-10 h-10 text-red-500" />, name: "Laravel", category: "backend" },
       { icon: <img src="/Yii.svg" className="w-10 h-10" />, name: "Yii2", category: "backend" },
       { icon: <img src="/Symfony.svg" className="w-10 h-10" />, name: "Symfony", category: "backend" },
+      { icon: <img src="/twig.svg" className="w-10 h-10" />, name: "Twig", category: "backend" },
       { icon: <img src="/Composer.svg" className="w-10 h-10" />, name: "Composer", category: "backend" },
       { icon: <img src="/NET.svg" className="w-10 h-10" />, name: "ASP.NET", category: "backend" },
       { icon: <img src="/netcore.svg" className="w-10 h-10" />, name: "ASP.NET Core", category: "backend" },
