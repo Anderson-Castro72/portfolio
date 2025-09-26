@@ -6,7 +6,7 @@ const resources = {
   en: {
     translation: {
       hero: {
-        subtitle: "Building scalable apps and optimized solutions for clients",
+        subtitle: "Custom software: scalable, efficient, and tailored to your needs",
         contact: "Contact Me",
       },
       about: {
@@ -81,7 +81,7 @@ const resources = {
   es: {
     translation: {
       hero: {
-        subtitle: "Construyendo aplicaciones escalables y soluciones optimizadas para los clientes",
+          subtitle: "Software personalizado: escalable, eficiente y hecho para tus necesidades",
         contact: "Contáctame",
       },
       about: {
