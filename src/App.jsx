@@ -13,6 +13,7 @@
   import Lightbox from "yet-another-react-lightbox";
   import "yet-another-react-lightbox/styles.css";
 
+
   export default function Portfolio() {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [darkMode, setDarkMode] = useState(false);
@@ -151,7 +152,13 @@
       },
     ];
 
+    const ideas = [
+      { key: "ganaderia" },
+      { key: "ecommerceFerreteria" },
+      { key: "controlGastos" }
+    ];
 
+    
     const categories = ["All", ...new Set(techs.map(t => t.category))];
     
       return (
@@ -354,6 +361,44 @@
               />
             )}
           </section>
+
+<section id="ideas" className="max-w-6xl mx-auto py-20 px-4">
+  <h2 className="text-3xl font-semibold text-left mb-10 dark:text-gray-100">
+    {t("ideas.title")}
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {Object.entries(t("ideas.items", { returnObjects: true })).map(([key, idea]) => (
+      <div
+        key={key}
+        className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md dark:shadow-gray-700/50 hover:scale-105 transition transform"
+      >
+        <h3 className="text-xl font-bold mb-2 dark:text-gray-100">{idea.title}</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-3">{idea.description}</p>
+        <p className="text-sm text-indigo-600 dark:text-indigo-400 mb-2">
+          {t("ideas.status")}: {idea.status}
+        </p>
+        <p className="text-sm text-gray-800 dark:text-gray-200 mb-4">
+          {t("ideas.impact")}: {idea.impact}
+        </p>
+
+        {/* Botón de mostrar interés */}
+          <a
+            href={`mailto:andersteven.castro@gmail.com?subject=${encodeURIComponent(
+              t("ideas.emailSubject", { idea: idea.title })
+            )}&body=${encodeURIComponent(
+              t("ideas.emailBody", { idea: idea.title })
+            )}`}
+            className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
+          >
+            {t("ideas.interestButton")}
+          </a>
+
+      </div>
+    ))}
+  </div>
+</section>
+
 
           {/* Contact */}
           <section id="contact" className="max-w-3xl mx-auto py-20 px-4 text-center">

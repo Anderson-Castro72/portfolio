@@ -74,7 +74,36 @@ const resources = {
             ],
             impact: "Automated workflows, reduced inventory errors, and improved customer service for the business."
         }
+        },
+        ideas: {
+          title: "Ideas in Development",
+          status: "Status",
+          impact: "Impact",
+          interestButton: "Show Interest", 
+          emailSubject: "Interest in {{idea}}",
+          emailBody: "Hello,\n\nI am interested in the idea \"{{idea}}\" and would like to stay updated on the first releases.\n\nThanks!",
+          items: {
+            ganaderia: {
+              title: "Livestock Management Platform",
+              description: "System to help farmers register, monitor and optimize production.",
+              status: "Prototype",
+              impact: "Improves productivity and organization."
+            },
+            ecommerceFerreteria: {
+              title: "E-commerce for Hardware Stores",
+              description: "Online catalog with inventory control and ticket generation.",
+              status: "Exploring",
+              impact: "Facilitates online sales and reduces stock errors."
+            },
+            controlGastos: {
+              title: "Personal Expense Tracking App",
+              description: "Simple app to record daily income and expenses.",
+              status: "Testing",
+              impact: "Helps users gain financial clarity."
+            }
+          }
         }
+
         
     },
   },
@@ -149,6 +178,34 @@ const resources = {
             ],
             impact: "Automatizó flujos de trabajo, redujo errores de inventario y mejoró el servicio al cliente."
         }
+        },
+        ideas: {
+          title: "Ideas en Desarrollo",
+          status: "Estado",
+          impact: "Impacto",
+          interestButton: "Mostrar Interés",
+          emailSubject: "Interés en {{idea}}",
+          emailBody: "Hola,\n\nEstoy interesado en la idea \"{{idea}}\" y me gustaría estar al tanto de las primeras versiones.\n\nGracias!",
+          items: {
+            ganaderia: {
+              title: "Plataforma de Gestión Ganadera",
+              description: "Sistema que ayuda a los ganaderos a registrar, monitorear y optimizar la producción.",
+              status: "En prototipo",
+              impact: "Mejora la productividad y la organización."
+            },
+            ecommerceFerreteria: {
+              title: "E-commerce para Ferreterías",
+              description: "Catálogo en línea con control de inventario y generación de tickets.",
+              status: "Explorando",
+              impact: "Facilita las ventas en línea y reduce errores de stock."
+            },
+            controlGastos: {
+              title: "App de Control de Gastos Personales",
+              description: "Aplicación sencilla para registrar ingresos y egresos diarios.",
+              status: "En pruebas",
+              impact: "Ayuda a los usuarios a tener claridad financiera."
+            }
+          }
         }
     },
   },
