@@ -181,18 +181,6 @@ const resources = {
           emailSubject: "Interés en {{idea}}",
           emailBody: "Hola,\n\nEstoy interesado en la idea \"{{idea}}\" y me gustaría estar al tanto de las primeras versiones.\n\nGracias!",
           items: {
-            ganaderia: {
-              title: "Plataforma de Gestión Ganadera",
-              description: "Sistema que ayuda a los ganaderos a registrar, monitorear y optimizar la producción.",
-              status: "En prototipo",
-              impact: "Mejora la productividad y la organización."
-            },
-            ecommerceFerreteria: {
-              title: "E-commerce para Ferreterías",
-              description: "Catálogo en línea con control de inventario y generación de tickets.",
-              status: "Explorando",
-              impact: "Facilita las ventas en línea y reduce errores de stock."
-            },
             saasMedicos: {
               title: "SaaS para Médicos Independientes",
               description: "Plataforma digital diseñada para médicos que ofrecen sus servicios en varias clínicas, permitiéndoles gestionar de forma centralizada expedientes clínicos, citas y pacientes.",
