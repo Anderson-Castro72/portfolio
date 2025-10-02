@@ -83,24 +83,18 @@ const resources = {
           emailSubject: "Interest in {{idea}}",
           emailBody: "Hello,\n\nI am interested in the idea \"{{idea}}\" and would like to stay updated on the first releases.\n\nThanks!",
           items: {
-            ganaderia: {
-              title: "Livestock Management Platform",
-              description: "System to help farmers register, monitor and optimize production.",
-              status: "Prototype",
-              impact: "Improves productivity and organization."
-            },
-            ecommerceFerreteria: {
-              title: "E-commerce for Hardware Stores",
-              description: "Online catalog with inventory control and ticket generation.",
-              status: "Exploring",
-              impact: "Facilitates online sales and reduces stock errors."
-            },
-            controlGastos: {
-              title: "Personal Expense Tracking App",
-              description: "Simple app to record daily income and expenses.",
-              status: "Testing",
-              impact: "Helps users gain financial clarity."
-            }
+              saasDoctors: {
+                title: "SaaS for Independent Doctors",
+                description: "A cloud-based platform designed for doctors working across multiple clinics, enabling them to manage patient records, appointments, and medical histories in one place.",
+                status: "Exploring",
+                problem: "Many independent doctors still manage patient records on paper. This leads to information loss, difficulty staying organized when working in several clinics, and limited access to medical histories on the go.",
+                solution: "A cloud solution accessible from any device that allows doctors to create and consult digital medical records organized by clinic, manage appointments, and keep a complete patient history.",
+                impact: "Helps independent doctors streamline their workflow, prevent errors and data loss, improve patient care, and reduce dependence on paper-based records.",
+                businessModel: "Monthly subscription: $15 for the first clinic + $10 for each additional clinic. Scalable according to the number of clinics or activated features.",
+                differentiator: "Unlike other medical software, this SaaS focuses specifically on independent doctors working across multiple clinics, providing flexibility, simplicity, and a fair pay-as-you-grow model.",
+                nextSteps: "Validate the proposal with doctors through surveys, define core features, and build an MVP (minimum viable product) for initial testing."
+              }
+
           }
         }
 
@@ -199,12 +193,18 @@ const resources = {
               status: "Explorando",
               impact: "Facilita las ventas en línea y reduce errores de stock."
             },
-            controlGastos: {
-              title: "App de Control de Gastos Personales",
-              description: "Aplicación sencilla para registrar ingresos y egresos diarios.",
-              status: "En pruebas",
-              impact: "Ayuda a los usuarios a tener claridad financiera."
+            saasMedicos: {
+              title: "SaaS para Médicos Independientes",
+              description: "Plataforma digital diseñada para médicos que ofrecen sus servicios en varias clínicas, permitiéndoles gestionar de forma centralizada expedientes clínicos, citas y pacientes.",
+              status: "Explorando",
+              problem: "Muchos médicos independientes aún manejan el historial de sus pacientes en papel. Esto genera pérdida de información, dificultad para organizarse cuando atienden en múltiples clínicas y falta de acceso rápido a los expedientes.",
+              solution: "Un sistema en la nube accesible desde cualquier dispositivo, que permite crear y consultar expedientes digitales separados por clínica, organizar citas y mantener un registro histórico de cada paciente.",
+              impact: "Optimiza el trabajo de los médicos independientes, evita errores y pérdidas de información, mejora la atención al paciente y reduce la dependencia del papel.",
+              businessModel: "Suscripción mensual: $15 por la primera clínica + $10 por cada clínica adicional. Escalable según el número de clínicas o la cantidad de funciones activadas.",
+              differentiator: "A diferencia de otros softwares médicos, este SaaS se enfoca en médicos independientes con múltiples clínicas, ofreciendo flexibilidad, simplicidad de uso y un esquema de pago justo basado en el uso real.",
+              nextSteps: "Validar la propuesta con médicos mediante encuestas, definir las funciones prioritarias y construir un MVP (mínimo producto viable) para pruebas iniciales."
             }
+
           }
         }
     },

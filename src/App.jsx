@@ -152,15 +152,10 @@
       },
     ];
 
-    const ideas = [
-      { key: "ganaderia" },
-      { key: "ecommerceFerreteria" },
-      { key: "controlGastos" }
-    ];
-
     
     const categories = ["All", ...new Set(techs.map(t => t.category))];
-    
+    const [openModal, setOpenModal] = useState(null);
+
       return (
       <div className={darkMode ? "dark" : ""}>
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -234,30 +229,57 @@
                   className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md dark:shadow-gray-700/50 hover:scale-105 transition transform"
                 >
                   <h3 className="text-xl font-bold mb-2 dark:text-gray-100">{idea.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-3">{idea.description}</p>
-                  <p className="text-sm text-indigo-600 dark:text-indigo-400 mb-2">
-                    {t("ideas.status")}: {idea.status}
-                  </p>
-                  <p className="text-sm text-gray-800 dark:text-gray-200 mb-4">
-                    {t("ideas.impact")}: {idea.impact}
-                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">{idea.description}</p>
 
-                  {/* Botón de mostrar interés */}
-                    <a
-                      href={`mailto:andersteven.castro@gmail.com?subject=${encodeURIComponent(
-                        t("ideas.emailSubject", { idea: idea.title })
-                      )}&body=${encodeURIComponent(
-                        t("ideas.emailBody", { idea: idea.title })
-                      )}`}
-                      className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
-                    >
-                      {t("ideas.interestButton")}
-                    </a>
-
+                  {/* Botón para abrir modal */}
+                  <button
+                    onClick={() => setOpenModal(idea)}
+                    className="text-sm text-blue-600 dark:text-blue-400 underline hover:text-blue-800"
+                  >
+                    View More
+                  </button>
                 </div>
               ))}
             </div>
+
+            {/* Modal */}
+            {openModal && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg max-w-2xl w-full overflow-auto max-h-[90vh] p-6">
+                  <h3 className="text-2xl font-bold mb-4 dark:text-gray-100">{openModal.title}</h3>
+                  <p className="mb-2 text-gray-700 dark:text-gray-300">{openModal.description}</p>
+                  {openModal.status && <p className="mb-1 text-sm text-indigo-600 dark:text-indigo-400"><strong>Status:</strong> {openModal.status}</p>}
+                  {openModal.impact && <p className="mb-1 text-sm text-gray-800 dark:text-gray-200"><strong>Impact:</strong> {openModal.impact}</p>}
+                  {openModal.problem && <p className="mb-1 text-sm text-gray-700 dark:text-gray-300"><strong>Problem:</strong> {openModal.problem}</p>}
+                  {openModal.solution && <p className="mb-1 text-sm text-gray-700 dark:text-gray-300"><strong>Solution:</strong> {openModal.solution}</p>}
+                  {openModal.businessModel && <p className="mb-1 text-sm text-gray-700 dark:text-gray-300"><strong>Business Model:</strong> {openModal.businessModel}</p>}
+                  {openModal.differentiator && <p className="mb-1 text-sm text-gray-700 dark:text-gray-300"><strong>Differentiator:</strong> {openModal.differentiator}</p>}
+                  {openModal.nextSteps && <p className="mb-4 text-sm text-gray-700 dark:text-gray-300"><strong>Next Steps:</strong> {openModal.nextSteps}</p>}
+
+                  {/* Botón de interés */}
+                  <a
+                    href={`mailto:andersteven.castro@gmail.com?subject=${encodeURIComponent(
+                      t("ideas.emailSubject", { idea: openModal.title })
+                    )}&body=${encodeURIComponent(
+                      t("ideas.emailBody", { idea: openModal.title })
+                    )}`}
+                    className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition mb-4"
+                  >
+                    {t("ideas.interestButton")}
+                  </a>
+
+                  {/* Botón cerrar */}
+                  <button
+                    onClick={() => setOpenModal(null)}
+                    className="ml-4 px-4 py-2 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
           </section>
+
 
           {/* Tecnologías */}
           <section className="max-w-6xl mx-auto py-16 px-4">
