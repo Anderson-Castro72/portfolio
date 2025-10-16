@@ -42,13 +42,14 @@
       { icon: <img src="/AngularJS.svg" className="w-10 h-10" />, name: "Angular.js", category: "frontend" },
       { icon: <SiTypescript className="w-10 h-10 text-blue-600" />, name: "TypeScript", category: "frontend" },
       { icon: <FaReact className="w-10 h-10 text-blue-500" />, name: "React", category: "frontend" },
-      { icon: <img src="/Vite.svg" className="w-10 h-10" />, name: "Vite", category: "frontend" },
+      { icon: <img src="/vite.svg" className="w-10 h-10" />, name: "Vite", category: "frontend" },
       { icon: <SiBootstrap className="w-10 h-10 text-purple-600" />, name: "Bootstrap", category: "frontend" },
 
       // Backend
       { icon: <FaNodeJs className="w-10 h-10 text-gray-700" />, name: "Node.js", category: "backend" },
       { icon: <SiExpress className="w-10 h-10 text-gray-700" />, name: "Express.js", category: "backend" },
       { icon: <SiNestjs className="w-10 h-10 text-red-600" />, name: "Nest.js", category: "backend" },
+      { icon: <img src="/nextauth.svg" className="w-10 h-10" />, name: "NextAuth.js", category: "backend" },
       { icon: <SiLaravel className="w-10 h-10 text-red-500" />, name: "Laravel", category: "backend" },
       { icon: <img src="/Yii.svg" className="w-10 h-10" />, name: "Yii2", category: "backend" },
       { icon: <img src="/Symfony.svg" className="w-10 h-10" />, name: "Symfony", category: "backend" },
@@ -56,6 +57,7 @@
       { icon: <img src="/Composer.svg" className="w-10 h-10" />, name: "Composer", category: "backend" },
       { icon: <img src="/NET.svg" className="w-10 h-10" />, name: "ASP.NET", category: "backend" },
       { icon: <img src="/netcore.svg" className="w-10 h-10" />, name: "ASP.NET Core", category: "backend" },
+      { icon: <img src="/BCrypt.svg" className="w-10 h-10" />, name: "Bcrypt", category: "backend" },
       { icon: <FaDocker className="w-10 h-10 text-blue-500" />, name: "Docker", category: "backend" },
       { icon: <SiKubernetes className="w-10 h-10 text-blue-600" />, name: "Kubernetes", category: "backend" },
 
@@ -66,6 +68,8 @@
       { icon: <img src="/DBeaver.svg" className="w-10 h-10" />, name: "DBeaver", category: "databases" },
       { icon: <SiMongodb className="w-10 h-10 text-green-700" />, name: "MongoDB", category: "databases" },
       { icon: <img src="/Sequelize.svg" className="w-10 h-10" />, name: "Sequelize", category: "databases" },
+      { icon: <img src="/prisma.svg" className="w-10 h-10" />, name: "Prisma", category: "databases" },
+      { icon: <img src="/sqlite.svg" className="w-10 h-10" />, name: "SQLite", category: "databases" },
 
       // Data Science
       { icon: <img src="/Pandas.svg" className="w-10 h-10" />, name: "Pandas", category: "dataScience" },
@@ -99,18 +103,36 @@
       { icon: <img src="/Figma.svg" className="w-10 h-10" />, name: "Figma", category: "tools" },
       { icon: <img src="/VisualStudio.svg" className="w-10 h-10" />, name: "Visual Studio", category: "tools" },
       { icon: <img src="/code.svg" className="w-10 h-10" />, name: "VS Code", category: "tools" },
+      { icon: <img src="/gemini.svg" className="w-10 h-10" />, name: "Gemini API", category: "tools" },
     ];
 
     const projects = [
       {
           key: "geminiChatApp",
           technologies: [
-             "Tailwind CSS", "PostgreSQL", "Node.js", "GitHub"
+              "JavaScript",
+              "TypeScript",
+              "HTML5",
+              "CSS3",
+              "Tailwind CSS",
+              "Next.js",
+              "React",
+              "Node.js",
+              "NextAuth.js",
+              "Bcrypt",
+              "Prisma",
+              "SQLite",
+              "Gemini API",
+              "Github"
+            ],
+          images: [     
+          "/projects/20.png",
+          "/projects/21.png",
+          "/projects/18.png",
+          "/projects/19.png",
+          "/projects/22.png",
           ],
-          images: [
-            "/projects/0.png",
-          ],
-          link: "https://github.com/Anderson-Castro72/GeminiChatApp",
+          link: "https://github.com/Anderson-Castro72/Linarca-s-technical-test.git",
       },
       {
         key: "reverseAuction",
@@ -481,7 +503,7 @@
 
               {/* LinkedIn */}
               <a
-                href="www.linkedin.com/in/anderson-castro72/"
+                href="https://www.linkedin.com/in/anderson-castro72/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-500 transition-all duration-300"
