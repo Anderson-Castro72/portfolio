@@ -36,6 +36,21 @@ const resources = {
             "tools": "Tools"
         },      
         projects: {
+          geminiChatApp: {
+            name: "AI Chat Platform with Gemini 2.5",
+            period: "Oct 2025",
+            description:
+              "Modern web application enabling real-time chat with Google's Gemini model, offering conversation history, user authentication, and an intuitive UI.",
+            role: [
+              "Full Stack development using Next.js 14 and TypeScript",
+              "Integration with Google Generative AI API (Gemini)",
+              "Persistent chat storage with Prisma + PostgreSQL",
+              "User authentication via NextAuth",
+              "Responsive UI with TailwindCSS and clean UX design"
+            ],
+            impact:
+              "Deployed as a demo app for portfolio purposes, showcasing integration of AI, database persistence, and modern frontend practices."
+          },
         reverseAuction: {
             name: "Reverse Auction Platform",
             period: "Feb – Aug 2025",
@@ -134,6 +149,21 @@ const resources = {
             "tools": "Herramientas"
         },
         projects: {
+              geminiChatApp: {
+                name: "Plataforma de Chat con Gemini 2.5",
+                period: "Oct 2024",
+                description:
+                  "Aplicación web moderna que permite chatear en tiempo real con el modelo Gemini de Google, con historial de conversación, autenticación y una interfaz intuitiva.",
+                role: [
+                  "Desarrollo Full Stack con Next.js 14 y TypeScript",
+                  "Integración con la API de Google Generative AI (Gemini)",
+                  "Persistencia de conversaciones con Prisma + PostgreSQL",
+                  "Autenticación de usuarios mediante NextAuth",
+                  "Interfaz adaptable y diseño limpio con TailwindCSS"
+                ],
+                impact:
+                  "Implementada como aplicación demo para portafolio, mostrando integración de IA, persistencia de datos y prácticas modernas de frontend."
+              },
         reverseAuction: {
             name: "Plataforma de Subastas Inversas",
             period: "Febrero – Agosto 2025",

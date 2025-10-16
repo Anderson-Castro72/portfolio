@@ -103,6 +103,16 @@
 
     const projects = [
       {
+          key: "geminiChatApp",
+          technologies: [
+             "Tailwind CSS", "PostgreSQL", "Node.js", "GitHub"
+          ],
+          images: [
+            "/projects/0.png",
+          ],
+          link: "https://github.com/Anderson-Castro72/GeminiChatApp",
+      },
+      {
         key: "reverseAuction",
         technologies: [
           "Node.js", "Express.js", "Sequelize", "PostgreSQL","DBeaver",
