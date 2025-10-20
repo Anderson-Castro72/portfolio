@@ -1,4 +1,4 @@
-  import { useState } from "react";
+import { useState } from "react";
   import { useTranslation } from "react-i18next";
   import "./i18n";
   import { 
@@ -157,7 +157,7 @@
         ],
         images: [
           "/projects/0.png",
-          "/projects/1.png",
+          "/projects/1L.png",
           "/projects/2.png",
           "/projects/3.png",
           "/projects/4.png",
@@ -187,12 +187,16 @@
     
     const categories = ["All", ...new Set(techs.map(t => t.category))];
     const [openModal, setOpenModal] = useState(null);
+    
+    // --- NUEVO ESTADO PARA EL MODAL DE PROYECTOS ---
+    const [openProjectModal, setOpenProjectModal] = useState(null);
+
 
       return (
       <div className={darkMode ? "dark" : ""}>
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
-          <div className="fixed top-4 right-4 flex gap-3">
+          <div className="fixed top-4 right-4 flex gap-3 z-10"> {/* Añadido z-10 por si acaso */}
             {/* Botón idioma */}
             <button
               onClick={toggleLang}
@@ -268,20 +272,20 @@
                     onClick={() => setOpenModal(idea)}
                     className="text-sm text-blue-600 dark:text-blue-400 underline hover:text-blue-800"
                   >
-                    View More
+                    {i18n.language === "en" ? "View More" : "Ver Más"}
                   </button>
                 </div>
               ))}
             </div>
 
-            {/* Modal */}
+            {/* Modal de Ideas */}
             {openModal && (
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
                 <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg max-w-2xl w-full overflow-auto max-h-[90vh] p-6">
                   <h3 className="text-2xl font-bold mb-4 dark:text-gray-100">{openModal.title}</h3>
                   <p className="mb-2 text-gray-700 dark:text-gray-300">{openModal.description}</p>
-                  {openModal.status && <p className="mb-1 text-sm text-indigo-600 dark:text-indigo-400"><strong>Status:</strong> {openModal.status}</p>}
-                  {openModal.impact && <p className="mb-1 text-sm text-gray-800 dark:text-gray-200"><strong>Impact:</strong> {openModal.impact}</p>}
+                  {openModal.status && <p className="mb-1 text-sm text-indigo-600 dark:text-indigo-400"><strong>{t("ideas.status")}:</strong> {openModal.status}</p>}
+                  {openModal.impact && <p className="mb-1 text-sm text-gray-800 dark:text-gray-200"><strong>{t("ideas.impact")}:</strong> {openModal.impact}</p>}
                   {openModal.problem && <p className="mb-1 text-sm text-gray-700 dark:text-gray-300"><strong>Problem:</strong> {openModal.problem}</p>}
                   {openModal.solution && <p className="mb-1 text-sm text-gray-700 dark:text-gray-300"><strong>Solution:</strong> {openModal.solution}</p>}
                   {openModal.businessModel && <p className="mb-1 text-sm text-gray-700 dark:text-gray-300"><strong>Business Model:</strong> {openModal.businessModel}</p>}
@@ -305,7 +309,7 @@
                     onClick={() => setOpenModal(null)}
                     className="ml-4 px-4 py-2 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition"
                   >
-                    Close
+                    {i18n.language === "en" ? "Close" : "Cerrar"}
                   </button>
                 </div>
               </div>
@@ -383,45 +387,75 @@
                 <div
                   key={i}
                   className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md dark:shadow-gray-700/50 
-                            hover:scale-105 transition transform"
+                            hover:scale-105 transition transform cursor-pointer flex flex-col justify-between"
+                  onClick={() => setOpenProjectModal(project)} // <-- Manejador de clic en la card
                 >
-                  {/* Imagen principal */}
-                  <div className="flex flex-col gap-2 mb-4">
+                  <div> 
                     <img
                       src={project.images[0]}
                       alt={t(`projects.${project.key}.name`)}
-                      className="rounded-lg mb-4 cursor-pointer"
-                      onClick={() => {
-                        setActiveProject(project);
-                        setIndex(0);
-                      }}
+                      className="rounded-lg mb-4"
                     />
+
+                    <h3 className="text-xl font-bold mb-1 dark:text-gray-100">
+                      {t(`projects.${project.key}.name`)}
+                    </h3>
+                    <p className="text-gray-800 dark:text-gray-200 font-medium mb-4">
+                      {t(`projects.${project.key}.period`)}
+                    </p>
                   </div>
 
-                  {/* Textos traducibles */}
-                  <h3 className="text-xl font-bold mb-1 dark:text-gray-100">
-                    {t(`projects.${project.key}.name`)}
+                  <div className="flex flex-wrap gap-2 text-gray-900 dark:text-gray-100">
+                    {project.technologies.map((tech, j) => {
+                      const techObj = techs.find(t => t.name.includes(tech));
+                      return techObj ? <div key={j} className="text-2xl">{techObj.icon}</div> : null;
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {openProjectModal && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg max-w-2xl w-full overflow-auto max-h-[90vh] p-6">
+                  
+                  <h3 className="text-2xl font-bold mb-4 dark:text-gray-100">
+                    {t(`projects.${openProjectModal.key}.name`)}
                   </h3>
+
+                  <img
+                    src={openProjectModal.images[0]}
+                    alt={t(`projects.${openProjectModal.key}.name`)}
+                    className="rounded-lg mb-4 cursor-pointer"
+                    onClick={() => {
+                      setActiveProject(openProjectModal);
+                      setIndex(0);
+                    }}
+                  />
+                  <p className="text-xs text-center text-gray-500 dark:text-gray-400 mb-4">
+                    ({i18n.language === "en" ? "Click image to enlarge gallery" : "Clic en la imagen para ampliar la galería"})
+                  </p>
+
                   <p className="text-gray-800 dark:text-gray-200 font-medium mb-4">
-                    {t(`projects.${project.key}.period`)}
+                    {t(`projects.${openProjectModal.key}.period`)}
                   </p>
                   <p className="text-gray-700 dark:text-gray-300 mb-2">
-                    {t(`projects.${project.key}.description`)}
+                    {t(`projects.${openProjectModal.key}.description`)}
                   </p>
 
                   <ul className="text-sm text-gray-600 dark:text-gray-400 list-disc ml-5 mb-2">
-                    {t(`projects.${project.key}.role`, { returnObjects: true }).map((r, idx) => (
+                    {t(`projects.${openProjectModal.key}.role`, { returnObjects: true }).map((r, idx) => (
                       <li key={idx}>{r}</li>
                     ))}
                   </ul>
 
                   <p className="text-gray-800 dark:text-gray-200 font-medium mb-4">
-                    {t(`projects.${project.key}.impact`)}
+                    {t(`projects.${openProjectModal.key}.impact`)}
                   </p>
 
                   {/* Tecnologías */}
                   <div className="flex flex-wrap gap-2 mb-4 text-gray-900 dark:text-gray-100">
-                    {project.technologies.map((tech, j) => {
+                    {openProjectModal.technologies.map((tech, j) => {
                       const techObj = techs.find(t => t.name.includes(tech));
                       return techObj ? <div key={j} className="text-2xl">{techObj.icon}</div> : null;
                     })}
@@ -429,18 +463,26 @@
 
                   {/* Link al proyecto */}
                   <a
-                    href={project.link}
+                    href={openProjectModal.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 dark:text-blue-400 font-semibold hover:underline"
+                    className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition mb-4"
                   >
                     {i18n.language === "en" ? "View Project →" : "Ver Proyecto →"}
                   </a>
-                </div>
-              ))}
-            </div>
 
-            {/* Lightbox */}
+                  {/* Botón cerrar */}
+                  <button
+                    onClick={() => setOpenProjectModal(null)}
+                    className="ml-4 px-4 py-2 border rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+                  >
+                    {i18n.language === "en" ? "Close" : "Cerrar"}
+                  </button>
+
+                </div>
+              </div>
+            )}
+
             {activeProject && (
               <Lightbox
                 slides={activeProject.images.map((img) => ({ src: img }))}
