@@ -188,7 +188,6 @@ import { useState } from "react";
     const categories = ["All", ...new Set(techs.map(t => t.category))];
     const [openModal, setOpenModal] = useState(null);
     
-    // --- NUEVO ESTADO PARA EL MODAL DE PROYECTOS ---
     const [openProjectModal, setOpenProjectModal] = useState(null);
 
 
@@ -349,10 +348,14 @@ import { useState } from "react";
                   {techs.map((t, i) => (
                     <div
                       key={i}
-                      className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px] dark:bg-gray-800 dark:text-gray-100"
+                      className="relative group flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px] dark:bg-gray-800 dark:text-gray-100"
                     >
                       <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
-                      <p className="text-sm text-gray-700 dark:text-gray-200 text-center">{t.name}</p>
+                      {/* Tooltip */}
+                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md shadow-lg
+                                       opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                        {t.name}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -362,18 +365,20 @@ import { useState } from "react";
                 {techs
                   .filter(t => t.category === selectedCategory)
                   .map((t, i) => (
-                    <div
-                      key={i}
-                      className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100"
-                    >
-                      <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
-                      <p className="text-sm text-gray-700 dark:text-gray-200 text-center">{t.name}</p>
-                    </div>
-                  ))}
-              </div>
-            )}
-
-
+                        <div
+                          key={i}
+                          className="relative group flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100"
+                        >
+                          <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
+                          {/* Tooltip */}
+                          <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md shadow-lg
+                                          opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                            {t.name}
+                          </span>
+                        </div>
+                      ))}
+                  </div>
+                )}
           </section>
 
           {/* Projects */}
@@ -388,7 +393,7 @@ import { useState } from "react";
                   key={i}
                   className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md dark:shadow-gray-700/50 
                             hover:scale-105 transition transform cursor-pointer flex flex-col justify-between"
-                  onClick={() => setOpenProjectModal(project)} // <-- Manejador de clic en la card
+                  onClick={() => setOpenProjectModal(project)} 
                 >
                   <div> 
                     <img
@@ -408,7 +413,17 @@ import { useState } from "react";
                   <div className="flex flex-wrap gap-2 text-gray-900 dark:text-gray-100">
                     {project.technologies.map((tech, j) => {
                       const techObj = techs.find(t => t.name.includes(tech));
-                      return techObj ? <div key={j} className="text-2xl">{techObj.icon}</div> : null;
+                      if (!techObj) return null;
+                      return (
+                        <div key={j} className="relative group text-2xl">
+                          {techObj.icon}
+                          {/* Tooltip */}
+                          <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md shadow-lg
+                                           opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                            {techObj.name}
+                          </span>
+                        </div>
+                      );
                     })}
                   </div>
                 </div>
@@ -457,7 +472,17 @@ import { useState } from "react";
                   <div className="flex flex-wrap gap-2 mb-4 text-gray-900 dark:text-gray-100">
                     {openProjectModal.technologies.map((tech, j) => {
                       const techObj = techs.find(t => t.name.includes(tech));
-                      return techObj ? <div key={j} className="text-2xl">{techObj.icon}</div> : null;
+                      if (!techObj) return null;
+                      return (
+                        <div key={j} className="relative group text-2xl">
+                          {techObj.icon}
+                          {/* Tooltip */}
+                          <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md shadow-lg
+                                           opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                            {techObj.name}
+                          </span>
+                        </div>
+                      );
                     })}
                   </div>
 
