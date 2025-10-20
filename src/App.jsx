@@ -13,7 +13,6 @@ import { useState } from "react";
   import Lightbox from "yet-another-react-lightbox";
   import "yet-another-react-lightbox/styles.css";
 
-
   export default function Portfolio() {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [darkMode, setDarkMode] = useState(false);
@@ -184,18 +183,15 @@ import { useState } from "react";
       },
     ];
 
-    
     const categories = ["All", ...new Set(techs.map(t => t.category))];
     const [openModal, setOpenModal] = useState(null);
-    
     const [openProjectModal, setOpenProjectModal] = useState(null);
-
 
       return (
       <div className={darkMode ? "dark" : ""}>
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
-          <div className="fixed top-4 right-4 flex gap-3 z-10"> {/* Añadido z-10 por si acaso */}
+          <div className="fixed top-4 right-4 flex gap-3 z-10"> 
             {/* Botón idioma */}
             <button
               onClick={toggleLang}
@@ -212,7 +208,6 @@ import { useState } from "react";
               {darkMode ? "🌙 Dark" : "☀️ Light"}
             </button>
           </div>
-
 
           {/* Hero */}
           <section className="flex flex-col items-center justify-center py-24 text-center 
@@ -315,7 +310,6 @@ import { useState } from "react";
             )}
           </section>
 
-
           {/* Tecnologías */}
           <section className="max-w-6xl mx-auto py-16 px-4">
             <h2 className="text-3xl font-semibold text-center mb-10">
@@ -340,7 +334,6 @@ import { useState } from "react";
               ))}
             </div>
 
-
             {/* Tech Grid */}
             {selectedCategory === "All" ? (
               <div className="relative overflow-hidden w-full py-4">
@@ -348,14 +341,10 @@ import { useState } from "react";
                   {techs.map((t, i) => (
                     <div
                       key={i}
-                      className="relative group flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px] dark:bg-gray-800 dark:text-gray-100"
+                      className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl min-w-[100px] dark:bg-gray-800 dark:text-gray-100"
                     >
                       <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
-                      {/* Tooltip */}
-                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md shadow-lg
-                                       opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
-                        {t.name}
-                      </span>
+                      <p className="text-sm text-gray-700 dark:text-gray-200 text-center">{t.name}</p>
                     </div>
                   ))}
                 </div>
@@ -365,18 +354,14 @@ import { useState } from "react";
                 {techs
                   .filter(t => t.category === selectedCategory)
                   .map((t, i) => (
-                        <div
-                          key={i}
-                          className="relative group flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100"
-                        >
-                          <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
-                          {/* Tooltip */}
-                          <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md shadow-lg
-                                          opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
-                            {t.name}
-                          </span>
-                        </div>
-                      ))}
+                    <div
+                      key={i}
+                      className="flex flex-col items-center p-4 bg-white rounded-2xl shadow transform transition duration-300 hover:scale-110 hover:rotate-6 hover:shadow-2xl dark:bg-gray-800 dark:text-gray-100"
+                    >
+                      <div className="text-5xl animate-spin-slow hover:animate-none">{t.icon}</div>
+                      <p className="text-sm text-gray-700 dark:text-gray-200 text-center">{t.name}</p>
+                    </div>
+                  ))}
                   </div>
                 )}
           </section>
@@ -605,7 +590,6 @@ import { useState } from "react";
               </a>
             </div>
           </section>
-
         </div>
       </div>
     );
