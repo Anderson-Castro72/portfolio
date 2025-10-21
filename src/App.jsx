@@ -122,6 +122,7 @@ import { useState } from "react";
               "Prisma",
               "SQLite",
               "Gemini API",
+              "Jest",
               "Github"
             ],
           images: [     
