@@ -10,7 +10,6 @@ const resources = {
       },
       about: {
         title: "About Me",
-        // CORRECCIÓN: Tono unificado para ser más profesional, similar a la versión en español.
         description: "Hi, I’m Ander 👋 a Software Engineer specializing in transforming complex ideas into robust, scalable, and efficient Full Stack software.\n\nAs a Software Engineer, I focus on backend development (Node, .NET, Yii2) to build solid foundations and ensure business logic solves real-world problems.\nFor me, coding isn’t just about writing functions—it’s about turning ideas into experiences that actually make life easier.",
       },
       skills: {
@@ -73,8 +72,7 @@ const resources = {
             "Responsive frontend with Bootstrap",
             "PDF & Excel reporting integrations"
           ],
-          // CORRECCIÓN: Se añadió la métrica específica para igualar la versión en español.
-          impact: "Launched July 2024, managing 1,000+ students & 500+ projects annually, reducing document processing time by 60%."
+          impact: "Launched July 2024, managing 1,000+ students & 500+ projects annually, reducing document processing time by 90%."
         },
         motorcycleWorkshop: {
           name: "Motorcycle Workshop System - Freelancer",
@@ -87,7 +85,6 @@ const resources = {
             "Database with MongoDB Atlas",
             "Testing endpoints with Postman"
           ],
-          // CORRECCIÓN: Se añadió la métrica específica para igualar la versión en español.
           impact: "Automated workflows, improved customer service, and minimized inventory errors to 0% within the first month of use."
         }
       },
@@ -109,7 +106,19 @@ const resources = {
             businessModel: "Monthly subscription: $15 for the first clinic + $10 for each additional clinic. Scalable according to the number of clinics or activated features.",
             differentiator: "Unlike other medical software, this SaaS focuses specifically on independent doctors working across multiple clinics, providing flexibility, simplicity, and a fair pay-as-you-grow model.",
             nextSteps: "Validate the proposal with doctors through surveys, define core features, and build an MVP (minimum viable product) for initial testing."
+          },
+            saasBarbershops: {
+            title: "SaaS for Barbershops: Profit & Inventory Control",
+            description: "A simple system for barbers to track net profit per service, control product inventory, and manage appointments.",
+            status: "Exploring",
+            problem: "Barbershop owners often operate 'blindly', focusing only on total cash sales. They can't track their *real* net profit per service (after product costs) and have no control over product waste (inventory loss), which directly eats into their earnings.",
+            solution: "A streamlined platform that links every service (ticket) to the specific products used (inventory). It automatically calculates net profit per cut, provides alerts on low inventory, and (optionally) offers a simple booking link for clients.",
+            impact: "Gives owners clear visibility into their daily net profit, not just revenue. It stops the 'invisible' money loss from product waste and helps barbers save time by automating commission tracking and appointments.",
+            businessModel: "Monthly subscription: $10 (Lite/Solo Barber) / $20 (Pro/Multi-Barber). First 30 days free.",
+            differentiator: "Most POS systems are too complex. This is built *only* for barbers. Its main feature isn't just selling, but tracking *profit per cut* and *product cost*—their biggest blind spot.",
+            nextSteps: "Validate the core profit-tracking concept with 5-10 local barbers. Build an MVP focused *only* on inventory depletion per service and the daily net profit report."
           }
+          
         }
       }
     },
@@ -184,10 +193,9 @@ const resources = {
             "Frontend responsive con Bootstrap",
             "Integraciones de reportes PDF & Excel"
           ],
-          impact: "Lanzado en julio 2024, gestionando más de 1,000 estudiantes y 500 proyectos anualmente, redujo el tiempo de procesamiento de documentos en un 60%."
+          impact: "Lanzado en julio 2024, gestionando más de 1,000 estudiantes y 500 proyectos anualmente, redujo el tiempo de procesamiento de documentos en un 90%."
         },
         motorcycleWorkshop: {
-          // CORRECCIÓN: Error tipográfico.
           name: "Sistema para MotoTaller - Freelancer",
           period: "Octubre 2024 – Enero 2025",
           description: "Sistema freelance para cliente, gestión de inventario, ventas y compras con integración de códigos de barras.",
@@ -209,7 +217,6 @@ const resources = {
         emailSubject: "Interés en {{idea}}",
         emailBody: "Hola,\n\nEstoy interesado en la idea \"{{idea}}\" y me gustaría estar al tanto de las primeras versiones.\n\nGracias!",
         items: {
-          // CORRECCIÓN CRÍTICA: La clave ahora coincide con la versión en inglés.
           saasDoctors: {
             title: "SaaS para Médicos Independientes",
             description: "Plataforma digital diseñada para médicos que ofrecen sus servicios en varias clínicas, permitiéndoles gestionar de forma centralizada expedientes clínicos, citas y pacientes.",
@@ -220,7 +227,19 @@ const resources = {
             businessModel: "Suscripción mensual: $15 por la primera clínica + $10 por cada clínica adicional. Escalable según el número de clínicas o la cantidad de funciones activadas.",
             differentiator: "A diferencia de otros softwares médicos, este SaaS se enfoca en médicos independientes con múltiples clínicas, ofreciendo flexibilidad, simplicidad de uso y un esquema de pago justo basado en el uso real.",
             nextSteps: "Validar la propuesta con médicos mediante encuestas, definir las funciones prioritarias y construir un MVP (mínimo producto viable) para pruebas iniciales."
-          }
+          },
+          saasBarbershops: {
+          title: "SaaS para Barberías: Ganancia Real y Control de Inventario",
+          description: "Un sistema simple para que los barberos midan su ganancia neta por servicio, controlen el inventario de productos y gestionen citas.",
+          status: "Explorando",
+          problem: "Los dueños de barberías a menudo operan 'a ciegas', enfocándose solo en el total de ventas. No pueden medir su ganancia neta *real* por servicio (tras el costo de productos) y no tienen control sobre el desperdicio de producto (pérdida de inventario), lo que se 'come' directamente sus ganancias.",
+          solution: "Una plataforma ágil que conecta cada servicio (ticket) con los productos específicos que se usaron (inventario). Calcula automáticamente la ganancia neta por corte, envía alertas de inventario bajo y (opcionalmente) ofrece un enlace simple de citas para clientes.",
+          impact: "Brinda a los dueños visibilidad clara de su ganancia neta diaria, no solo de los ingresos brutos. Detiene la pérdida 'invisible' de dinero por desperdicio y ahorra tiempo al automatizar el cálculo de comisiones y la gestión de citas.",
+          businessModel: "Suscripción mensual: $10 (Lite/Un Barbero) / $20 (Pro/Multi-Barbero). Primeros 30 días gratis.",
+          differentiator: "La mayoría de sistemas POS son demasiado complejos. Este está creado *solo* para barberos. Su función principal no es solo vender, sino medir la *ganancia real por corte* y el *costo de producto*—su mayor punto ciego.",
+          nextSteps: "Validar el concepto de 'ganancia por corte' con 5-10 barberos locales. Construir un MVP enfocado *únicamente* en el consumo de inventario por servicio y en el reporte de ganancia neta diaria."
+        }
+
         }
       }
     },
